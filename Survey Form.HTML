@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/236x/b2/c8/15/b2c81552593fea43777eeb1367b142bb.jpg'); /* Background image */
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .rating-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .rating-table th, .rating-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .comments {
+            margin-bottom: 10px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .button {
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+            align-content: center;
+        }
+        .button.submit {
+            background-color: steelblue;
+        }
+        .button.reset {
+            background-color: steelblue;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        .indent {
+            margin-left: 220px;
+        }
+        .inline-container {
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 10px; 
+        }
+        .inline-label {
+            width: 30%; 
+            margin-right: 10px; 
+        }
+        .inline-input {
+            flex: 1; 
+        }
+
+        #comments {
+            width: 80%; 
+            height: 80px; 
+            overflow-y: auto; 
+            resize: none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <h4 style="background-color:steelblue;">Section 1</h4>
+        <form id="surveyForm" action="YOUR_SERVER_ENDPOINT" method="POST">
+            <div class="form-section">
+                <div class="question"><strong>1.1</strong> Which of the following services do you use?</div>
+                <label><input type="checkbox" name="service" value="Service 1"> Service 1</label>
+                <label class="indent"><input type="checkbox" name="service" value="Service 2"> Service 2</label><br>
+                <label><input type="checkbox" name="service" value="Service 3"> Service 3</label>
+                <label class="indent"><input type="checkbox" name="service" value="Service 4"> Service 4</label><br>
+                <input type="checkbox" id="other" name="method" value="Other"> Other 
+                <textarea id="message" name="message" rows="1" cols="20" required></textarea>
+            </div>
+
+            <div class="form-section">
+                <div class="question"><strong>1.2</strong> How would you rate our services in terms of:</div>
+                <table class="rating-table">
+                    <tr>
+                        <th style="background-color:steelblue; color:white;"></th>
+                        <th style="background-color:steelblue;">Excellent</th>
+                        <th style="background-color:steelblue;">Very Good</th>
+                        <th style="background-color:steelblue;">Good</th>
+                        <th style="background-color:steelblue;">Fair</th>
+                        <th style="background-color:steelblue;">Poor</th>
+                    </tr>
+                    <tr>
+                        <td>Your Overall Experience</td>
+                        <td><input type="radio" name="experience" value="Excellent"></td>
+                        <td><input type="radio" name="experience" value="Very Good"></td>
+                        <td><input type="radio" name="experience" value="Good"></td>
+                        <td><input type="radio" name="experience" value="Fair"></td>
+                        <td><input type="radio" name="experience" value="Poor"></td>
+                    </tr>
+                    <tr>
+                        <td>The Value of our service</td>
+                        <td><input type="radio" name="value" value="Excellent"></td>
+                        <td><input type="radio" name="value" value="Very Good"></td>
+                        <td><input type="radio" name="value" value="Good"></td>
+                        <td><input type="radio" name="value" value="Fair"></td>
+                        <td><input type="radio" name="value" value="Poor"></td>
+                    </tr>
+                    <tr>
+                        <td>Promptness of our service</td>
+                        <td><input type="radio" name="promptness" value="Excellent"></td>
+                        <td><input type="radio" name="promptness" value="Very Good"></td>
+                        <td><input type="radio" name="promptness" value="Good"></td>
+                        <td><input type="radio" name="promptness" value="Fair"></td>
+                        <td><input type="radio" name="promptness" value="Poor"></td>
+                    </tr>
+                    <tr>
+                        <td>The Courtesy of our staff</td>
+                        <td><input type="radio" name="courtesy" value="Excellent"></td>
+                        <td><input type="radio" name="courtesy" value="Very Good"></td>
+                        <td><input type="radio" name="courtesy" value="Good"></td>
+                        <td><input type="radio" name="courtesy" value="Fair"></td>
+                        <td><input type="radio" name="courtesy" value="Poor"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-section comments">
+                <div class="question"><strong>1.3</strong> Any comments or suggestions:</div>
+                <textarea class="form-input" rows="4" cols="50" id="comments" name="comments"></textarea>
+            </div>
+
+            <h4 style="background-color:steelblue;">Section 2</h4>
+            <div class="form-section">
+                <div class="question"><strong>2.1</strong> How may we reach you? (optional)</div>
+                <div class="inline-container">
+                    <label class="inline-label" align="right">Your name:</label>
+                    <input type="text" class="form-input inline-input" id="name" name="name" />
+                </div>
+                <div class="inline-container">
+                    <label class="inline-label" align="right">Phone:</label>
+                    <input type="tel" class="form-input inline-input" id="phone" name="phone" />
+                </div>
+                <div class="inline-container">
+                    <label class="inline-label" align="right">Email:</label>
+                    <input type="email" class="form-input inline-input" id="email" name="email" />
+                </div>
+            </div>
+
+            <button type="submit" class="button submit">Submit</button>
+            <button type="reset" class="button reset">Reset</button>
+        </form>
+    </div>
+</body>
+</html>
